@@ -1,111 +1,271 @@
-""<!DOCTYPE html>
-
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mohammed Razmirahman Khan | Portfolio</title>
   <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --text: #ffffff;
+      --highlight: #00bfff;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+    body.light {
+      --bg: #ffffff;
+      --card: #f4f4f4;
+      --text: #121212;
+      --highlight: #007acc;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #0f172a;
-      color: #f1f5f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     header {
-      background: linear-gradient(to right, #1e293b, #0f172a);
-      padding: 2rem;
+      background-color: var(--card);
+      padding: 2rem 1rem;
       text-align: center;
+      position: relative;
     }
     header h1 {
-      font-size: 2.5rem;
       margin: 0;
+      font-size: 2.5rem;
+      color: var(--highlight);
     }
     header p {
-      font-size: 1.2rem;
-      color: #94a3b8;
+      font-size: 1.1rem;
+      color: #aaa;
     }
-    section {
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--highlight);
+      color: var(--bg);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    nav {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--card);
+      padding: 1rem;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    nav a {
+      color: var(--highlight);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    main {
       padding: 2rem;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
+    section {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background-color: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
     h2 {
-      color: #38bdf8;
-      margin-bottom: 0.5rem;
+      color: var(--highlight);
+      margin-bottom: 1rem;
     }
     ul {
       padding-left: 1.5rem;
     }
-    .card {
-      background-color: #1e293b;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #64748b;
-    }
     a {
-      color: #38bdf8;
+      color: var(--highlight);
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    .btn {
+    .button {
       display: inline-block;
+      margin: 0.5rem 0.5rem 0 0;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--highlight);
+      color: var(--bg);
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .button:hover {
+      background-color: #0284c7;
+    }
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-top: 1rem;
-      background-color: #38bdf8;
-      color: #0f172a;
-      padding: 0.5rem 1rem;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .project-card {
+      background-color: var(--card);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px var(--shadow);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: var(--highlight);
+      color: var(--bg);
+      padding: 0.6rem 1.2rem;
+      border: none;
       border-radius: 5px;
       font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      background-color: var(--card);
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#summary">Summary</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#research">Research</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="#form">Message</a>
+  </nav><button class="theme-toggle" onclick="document.body.classList.toggle('light')">Toggle Theme</button>
+
   <header>
     <h1>Mohammed Razmirahman Khan</h1>
-    <p>AI & Cybersecurity Researcher | AWS & Zscaler Certified | MSc Aspirant – Germany 🇩🇪</p>
-  </header>  <section>
-    <div class="card">
-      <h2>About Me</h2>
-      <p>I’m a passionate AI & Cybersecurity researcher with a B.Tech in AI & Data Science. I hold certifications from AWS and Zscaler, and I authored <strong>CyberWraith</strong>, a project dedicated to making cybersecurity accessible for non-technical users. I am actively looking for HiWi roles, Research Assistantships, and collaborative projects in Germany or across Europe.</p>
-    </div><div class="card">
-  <h2>Key Highlights</h2>
+    <p>AI & Cybersecurity Researcher | B.Tech AI & DS | AWS & Zscaler Certified</p>
+  </header>
+  <main>
+    <section id="summary">
+      <h2>🎯 Professional Summary</h2>
+      <p>Final-year B.Tech student specializing in Artificial Intelligence and Cybersecurity with published research, certified virtual internships, and a strong grasp on real-world tech stacks. I’m dedicated to developing secure, intelligent systems that are accessible to all.</p>
+    </section><section id="education">
+  <h2>🎓 Education</h2>
   <ul>
-    <li>Published Research: "AI-Based Cyber Security Assistant for Non-Technical Users"</li>
-    <li>Certified by AWS Academy & Zscaler on Cloud and Zero Trust Security</li>
-    <li>Internships with AWS, Palo Alto Networks, and Zscaler</li>
-    <li>Strong foundation in AI, Cloud Security, and Applied Research</li>
+    <li><strong>ISL Engineering College</strong> – B.Tech in AI & Data Science (2021–2025)</li>
+    <li>CGPA: 7.74 (≈ 2.3 German GPA Equivalent)</li>
   </ul>
-</div>
+</section>
 
-<div class="card">
-  <h2>Projects</h2>
+<section id="certifications">
+  <h2>📜 Certifications</h2>
   <ul>
-    <li><strong>CyberWraith</strong>: AI-based security assistant project focused on user accessibility</li>
-    <li><strong>Research Paper</strong>: Published in IJITCE (Vol 13, Issue 2s, 2025)</li>
+    <li>AWS Academy – AI/ML Virtual Internship (Jan–Mar 2025)</li>
+    <li>Palo Alto – Cybersecurity Virtual Internship (Apr–Jun 2024)</li>
+    <li>Zscaler – Zero Trust Cloud Security Internship (Oct–Dec 2024)</li>
   </ul>
-  <a class="btn" href="https://github.com/justrazzzu" target="_blank">View GitHub</a>
-</div>
+</section>
 
-<div class="card">
-  <h2>Contact & Links</h2>
-  <p>Email: <a href="mailto:mrazmirahmankhan@gmail.com">mrazmirahmankhan@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/razmirahmankhan" target="_blank">razmirahmankhan</a></p>
-  <p>GitHub: <a href="https://github.com/justrazzzu" target="_blank">justrazzzu</a></p>
-</div>
+<section id="research">
+  <h2>📖 Research</h2>
+  <p><strong>Title:</strong> AI-Based Cyber Security Assistant for Non-Technical Users<br/>
+  <strong>Journal:</strong> International Journal of IT & Computer Science (IJITCE)<br/>
+  <strong>Volume:</strong> 13, Issue 2S, Pages: 560–566 (2025)</p>
+</section>
 
-  </section>  <footer>
-    <p>© 2025 Mohammed Razmirahman Khan. Built with 💻 using GitHub Pages.</p>
+<section id="skills">
+  <h2>💡 Technical Skills</h2>
+  <ul>
+    <li>Python, HTML, CSS, JavaScript</li>
+    <li>Flask, Scikit-learn, Streamlit</li>
+    <li>Kali Linux, Zero Trust, Threat Detection</li>
+    <li>MongoDB, GitHub, Postman, APIs</li>
+    <li>Research Writing, Technical Documentation</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>🛠️ Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>CyberWraith</h3>
+      <p>AI-powered assistant for simplifying cybersecurity for non-tech users. Uses NLP + threat detection APIs.</p>
+    </div>
+    <div class="project-card">
+      <h3>AI ML Cloud Lab</h3>
+      <p>Built and trained ML models using AWS Academy infrastructure. Hands-on cloud integration.</p>
+    </div>
+    <div class="project-card">
+      <h3>Zero Trust Simulation</h3>
+      <p>Designed identity-first security setup with Zscaler framework and segmentation policies.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>📩 Contact</h2>
+  <p><strong>📍 Location:</strong> Hyderabad, India</p>
+  <p><strong>📧 Email:</strong> <a href="mailto:just.razzzu@gmail.com">just.razzzu@gmail.com</a></p>
+  <p><strong>📱 Phone:</strong> <a href="tel:+917816002176">+91 7816002176</a></p>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/razmirahmankhan" class="button" target="_blank">LinkedIn</a>
+    <a href="https://github.com/justrazzzu" class="button" target="_blank">GitHub</a>
+    <a href="https://twitter.com/" class="button" target="_blank">Twitter</a>
+    <a href="https://instagram.com/" class="button" target="_blank">Instagram</a>
+    <a href="Resume.pdf" class="button" target="_blank">Download Resume</a>
+  </div>
+</section>
+
+<section id="form">
+  <h2>💬 Message Me</h2>
+  <form action="https://formspree.io/f/yourformid" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <p><small>(Form not active until you configure Formspree)</small></p>
+</section>
+
+  </main>
+  <footer>
+    &copy; 2025 Mohammed Razmirahman Khan | Built with 💻 using GitHub Pages
   </footer>
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
