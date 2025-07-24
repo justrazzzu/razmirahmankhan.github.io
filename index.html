@@ -53,28 +53,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-    nav {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: var(--card);
-      padding: 1rem;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
-    nav a {
-      color: var(--highlight);
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    nav a:hover {
-      color: #fff;
-    }
     main {
       padding: 2rem;
       max-width: 1000px;
@@ -157,18 +135,7 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#summary">Summary</a>
-    <a href="#education">Education</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#research">Research</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="#form">Message</a>
-  </nav><button class="theme-toggle" onclick="document.body.classList.toggle('light')">Toggle Theme</button>
-
-  <header>
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light')">Toggle Theme</button>  <header>
     <h1>Mohammed Razmirahman Khan</h1>
     <p>AI & Cybersecurity Researcher | B.Tech AI & DS | AWS & Zscaler Certified</p>
   </header>
