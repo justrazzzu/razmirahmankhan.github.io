@@ -1,238 +1,138 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed Razmirahman Khan | Portfolio</title>
-  <style>
-    :root {
-      --bg: #121212;
-      --card: #1e1e1e;
-      --text: #ffffff;
-      --highlight: #00bfff;
-      --shadow: rgba(0, 0, 0, 0.3);
-    }
-    body.light {
-      --bg: #ffffff;
-      --card: #f4f4f4;
-      --text: #121212;
-      --highlight: #007acc;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    header {
-      background-color: var(--card);
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: var(--highlight);
-    }
-    header p {
-      font-size: 1.1rem;
-      color: #aaa;
-    }
-    .theme-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--highlight);
-      color: var(--bg);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section {
-      margin-bottom: 2.5rem;
-      padding: 1.5rem;
-      background-color: var(--card);
-      border-radius: 10px;
-      box-shadow: 0 2px 6px var(--shadow);
-    }
-    h2 {
-      color: var(--highlight);
-      margin-bottom: 1rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    a {
-      color: var(--highlight);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .button {
-      display: inline-block;
-      margin: 0.5rem 0.5rem 0 0;
-      padding: 0.6rem 1.2rem;
-      background-color: var(--highlight);
-      color: var(--bg);
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .button:hover {
-      background-color: #0284c7;
-    }
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 1rem;
-    }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .project-card {
-      background-color: var(--card);
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px var(--shadow);
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 5px;
-    }
-    form button {
-      background-color: var(--highlight);
-      color: var(--bg);
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      background-color: var(--card);
-      color: #aaa;
-    }
-  </style>
-</head>
-<body>
-  <button class="theme-toggle" onclick="document.body.classList.toggle('light')">Toggle Theme</button>  <header>
-    <h1>Mohammed Razmirahman Khan</h1>
-    <p>AI & Cybersecurity Researcher | B.Tech AI & DS | AWS & Zscaler Certified</p>
-  </header>
-  <main>
-    <section id="summary">
-      <h2>🎯 Professional Summary</h2>
-      <p>Final-year B.Tech student specializing in Artificial Intelligence and Cybersecurity with published research, certified virtual internships, and a strong grasp on real-world tech stacks. I’m dedicated to developing secure, intelligent systems that are accessible to all.</p>
-    </section><section id="education">
-  <h2>🎓 Education</h2>
-  <ul>
-    <li><strong>ISL Engineering College</strong> – B.Tech in AI & Data Science (2021–2025)</li>
-    <li>CGPA: 7.74 (≈ 2.3 German GPA Equivalent)</li>
-  </ul>
-</section>
+import React from 'react'; import { Card, CardContent } from '@/components/ui/card'; import { Button } from '@/components/ui/button'; import { Mail, Phone, Linkedin, Instagram, FileText } from 'lucide-react'; import { motion } from 'framer-motion';
 
-<section id="certifications">
-  <h2>📜 Certifications</h2>
-  <ul>
-    <li>AWS Academy – AI/ML Virtual Internship (Jan–Mar 2025)</li>
-    <li>Palo Alto – Cybersecurity Virtual Internship (Apr–Jun 2024)</li>
-    <li>Zscaler – Zero Trust Cloud Security Internship (Oct–Dec 2024)</li>
-  </ul>
-</section>
+const fadeIn = { hidden: { opacity: 0, y: 40 }, visible: (i = 1) => ({ opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut', }, }), };
 
-<section id="research">
-  <h2>📖 Research</h2>
-  <p><strong>Title:</strong> AI-Based Cyber Security Assistant for Non-Technical Users<br/>
-  <strong>Journal:</strong> International Journal of IT & Computer Science (IJITCE)<br/>
-  <strong>Volume:</strong> 13, Issue 2S, Pages: 560–566 (2025)</p>
-</section>
+export default function Portfolio() { return ( <div className="min-h-screen bg-gradient-to-tr from-[#050505] via-[#0e0e0e] to-[#0b1a2b] text-white font-sans p-6"> <motion.header className="text-center py-10" initial="hidden" animate="visible" variants={fadeIn} custom={0} > <h1 className="text-6xl md:text-7xl font-black text-cyan-400 tracking-wide drop-shadow-xl uppercase">Cyber Sentinel</h1> <p className="text-md md:text-lg text-gray-300 mt-4 max-w-2xl mx-auto leading-relaxed"> I'm <strong>Mohammed Razmirahman Khan</strong> — an AI & Cybersecurity innovator creating digital protection systems for the modern world. From intelligent threat detection to privacy-first AI, I specialize in building solutions that earn global trust. </p> </motion.header>
 
-<section id="skills">
-  <h2>💡 Technical Skills</h2>
-  <ul>
-    <li>Python, HTML, CSS, JavaScript</li>
-    <li>Flask, Scikit-learn, Streamlit</li>
-    <li>Kali Linux, Zero Trust, Threat Detection</li>
-    <li>MongoDB, GitHub, Postman, APIs</li>
-    <li>Research Writing, Technical Documentation</li>
-  </ul>
-</section>
+<motion.section
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeIn}
+    custom={1}
+    className="text-center mb-10"
+  >
+    <h2 className="text-3xl font-bold text-cyan-300 mb-2">Mission Statement</h2>
+    <p className="text-gray-300 max-w-2xl mx-auto">
+      I believe that cybersecurity should be predictive, AI should be ethical, and tech should empower everyone. My mission is to merge intelligence with integrity — building systems that think smart and act safe.
+    </p>
+  </motion.section>
 
-<section id="projects">
-  <h2>🛠️ Projects</h2>
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>CyberWraith</h3>
-      <p>AI-powered assistant for simplifying cybersecurity for non-tech users. Uses NLP + threat detection APIs.</p>
-    </div>
-    <div class="project-card">
-      <h3>AI ML Cloud Lab</h3>
-      <p>Built and trained ML models using AWS Academy infrastructure. Hands-on cloud integration.</p>
-    </div>
-    <div class="project-card">
-      <h3>Zero Trust Simulation</h3>
-      <p>Designed identity-first security setup with Zscaler framework and segmentation policies.</p>
-    </div>
-  </div>
-</section>
+  <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {[...Array(7)].map((_, index) => (
+      <motion.div
+        key={index}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        custom={index + 2}
+      >
+        {index === 0 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
+            <CardContent className="p-6">
+              <h2 className="text-3xl text-cyan-300 font-bold mb-4">About Me</h2>
+              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                🎓 <strong>B.Tech in Computer Science</strong> (AI & Data Science)<br />
+                🎯 Age: 21 &nbsp; | &nbsp; Born: 13 March 2004<br />
+                🧠 I fuse ML, NLP, and cloud-native security into digital solutions. I’m passionate about ethical hacking, AI innovation, and building tech that protects humans and data alike.
+              </p>
+            </CardContent>
+          </Card>
+        )}
+        {index === 1 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
+            <CardContent className="p-6">
+              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Contact & Socials</h2>
+              <div className="space-y-3 text-gray-300 text-sm md:text-base">
+                <p className="flex items-center gap-2"><Mail className="w-4" /> just.razzzu@gmail.com</p>
+                <p className="flex items-center gap-2"><Phone className="w-4" /> +91 7816002176</p>
+                <p className="flex items-center gap-2"><Linkedin className="w-4" /> <a href="https://www.linkedin.com/in/mohammed-razmirahman-khan-92a357376" target="_blank" className="underline text-cyan-400">LinkedIn</a></p>
+                <p className="flex items-center gap-2"><Instagram className="w-4" /> <a href="https://instagram.com/just.razzzu" target="_blank" className="underline text-cyan-400">@just.razzzu</a></p>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+        {index === 2 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
+            <CardContent className="p-6">
+              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Certifications</h2>
+              <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm md:text-base">
+                <li><strong>Palo Alto Cybersecurity Fundamentals</strong> – 10 weeks (Apr–Jun 2024)</li>
+                <li><strong>Zscaler Zero Trust Cloud Security</strong> – 10 weeks (Oct–Dec 2024)</li>
+                <li><strong>AWS AI/ML Virtual Internship</strong> – 10 weeks (Jan–Mar 2025)</li>
+              </ul>
+            </CardContent>
+          </Card>
+        )}
+        {index === 3 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
+            <CardContent className="p-6">
+              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Published Research</h2>
+              <p className="text-gray-300 text-sm md:text-base">
+                📄 <strong>AI-Based Cybersecurity Assistant for Non-Technical Users</strong><br />
+                A system using ML + NLP to detect threats and communicate them in simple human language.<br />
+                🛠️ Tech Stack: Python, Flask, MongoDB, Scikit-learn, Streamlit<br />
+                ✍️ Role: Lead Developer & Author
+              </p>
+            </CardContent>
+          </Card>
+        )}
+        {index === 4 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
+            <CardContent className="p-6">
+              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Tech Arsenal</h2>
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-300 text-sm md:text-base">
+                <li>Python</li>
+                <li>Machine Learning</li>
+                <li>NLP</li>
+                <li>Wireshark</li>
+                <li>Nmap</li>
+                <li>Burp Suite</li>
+                <li>MongoDB</li>
+                <li>Flask</li>
+                <li>Streamlit</li>
+                <li>AWS</li>
+                <li>Git</li>
+                <li>Linux Scripting</li>
+              </ul>
+            </CardContent>
+          </Card>
+        )}
+        {index === 5 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-xl md:col-span-2 text-center transition duration-300 hover:shadow-cyan-500/40">
+            <CardContent className="p-8">
+              <p className="text-cyan-300 italic text-xl max-w-2xl mx-auto">
+                "In a world full of vulnerabilities, I don’t just find exploits — I architect resilience."
+              </p>
+              <Button className="mt-6 bg-cyan-500 hover:bg-cyan-600 text-black text-sm px-6 py-2 rounded-xl">
+                <FileText className="w-4 mr-2" /> Download Resume
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+        {index === 6 && (
+          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
+            <CardContent className="p-6">
+              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Featured Projects</h2>
+              <ul className="text-gray-300 text-sm md:text-base space-y-2">
+                <li>
+                  🔍 <strong>Dark Web Scanner Tool</strong> – A Tor-based Python tool to detect and flag stolen credentials using OSINT feeds.
+                </li>
+                <li>
+                  📧 <strong>AI-based Phishing Email Classifier</strong> – Built with NLP & ML for classifying phishing attacks with 94% accuracy.
+                </li>
+                <li>
+                  🔐 <strong>Zero Trust Access System</strong> – Identity-based access control simulation with policy enforcement layers.
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+        )}
+      </motion.div>
+    ))}
+  </section>
+</div>
 
-<section id="contact">
-  <h2>📩 Contact</h2>
-  <p><strong>📍 Location:</strong> Hyderabad, India</p>
-  <p><strong>📧 Email:</strong> <a href="mailto:just.razzzu@gmail.com">just.razzzu@gmail.com</a></p>
-  <p><strong>📱 Phone:</strong> <a href="tel:+917816002176">+91 7816002176</a></p>
-  <div class="socials">
-    <a href="https://www.linkedin.com/in/razmirahmankhan" class="button" target="_blank">LinkedIn</a>
-    <a href="https://github.com/justrazzzu" class="button" target="_blank">GitHub</a>
-    <a href="https://twitter.com/" class="button" target="_blank">Twitter</a>
-    <a href="https://instagram.com/" class="button" target="_blank">Instagram</a>
-    <a href="Resume.pdf" class="button" target="_blank">Download Resume</a>
-  </div>
-</section>
+); }
 
-<section id="form">
-  <h2>💬 Message Me</h2>
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Your Email" required />
-    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-  <p><small>(Form not active until you configure Formspree)</small></p>
-</section>
-
-  </main>
-  <footer>
-    &copy; 2025 Mohammed Razmirahman Khan | Built with 💻 using GitHub Pages
-  </footer>
-  <script>
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light');
-    }
-    document.querySelector('.theme-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-    });
-  </script>
-</body>
-</html>
