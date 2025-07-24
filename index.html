@@ -1,137 +1,55 @@
-import React from 'react'; import { Card, CardContent } from '@/components/ui/card'; import { Button } from '@/components/ui/button'; import { Mail, Phone, Linkedin, Instagram, FileText } from 'lucide-react'; import { motion } from 'framer-motion';
+import React from 'react'; import { Mail, Phone, Linkedin, Instagram, FileText } from 'lucide-react'; import { motion } from 'framer-motion';
 
-const fadeIn = { hidden: { opacity: 0, y: 40 }, visible: (i = 1) => ({ opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut', }, }), };
+const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: (i = 1) => ({ opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' } }) };
 
-export default function Portfolio() { return ( <div className="min-h-screen bg-gradient-to-tr from-[#050505] via-[#0e0e0e] to-[#0b1a2b] text-white font-sans p-6"> <motion.header className="text-center py-10" initial="hidden" animate="visible" variants={fadeIn} custom={0} > <h1 className="text-6xl md:text-7xl font-black text-cyan-400 tracking-wide drop-shadow-xl uppercase">Cyber Sentinel</h1> <p className="text-md md:text-lg text-gray-300 mt-4 max-w-2xl mx-auto leading-relaxed"> I'm <strong>Mohammed Razmirahman Khan</strong> — an AI & Cybersecurity innovator creating digital protection systems for the modern world. From intelligent threat detection to privacy-first AI, I specialize in building solutions that earn global trust. </p> </motion.header>
+export default function Portfolio() { return ( <div className="min-h-screen bg-black text-green-400 font-mono px-6 py-12"> <motion.h1 className="text-3xl md:text-5xl font-bold text-green-500 mb-4" initial="hidden" animate="visible" variants={fadeIn} custom={0} > > Mohammed Razmirahman Khan </motion.h1>
 
-<motion.section
+<motion.p
+    className="text-md md:text-lg text-green-300 mb-6"
     initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
+    animate="visible"
     variants={fadeIn}
     custom={1}
-    className="text-center mb-10"
   >
-    <h2 className="text-3xl font-bold text-cyan-300 mb-2">Mission Statement</h2>
-    <p className="text-gray-300 max-w-2xl mx-auto">
-      I believe that cybersecurity should be predictive, AI should be ethical, and tech should empower everyone. My mission is to merge intelligence with integrity — building systems that think smart and act safe.
-    </p>
-  </motion.section>
+    Cybersecurity Enthusiast | AI/ML Developer | Digital Defense Architect
+  </motion.p>
 
-  <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {[...Array(7)].map((_, index) => (
-      <motion.div
-        key={index}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeIn}
-        custom={index + 2}
+  <motion.section
+    className="space-y-6 text-sm md:text-base"
+    initial="hidden"
+    animate="visible"
+    variants={fadeIn}
+    custom={2}
+  >
+    <pre className="bg-[#0a0a0a] p-4 rounded-md border border-green-500">
+
+{$ whoami 👨‍💻 Mohammed, 21 | B.Tech in CS (AI & DS) 🔐 Passionate about defending digital frontiers }</pre>
+
+<pre className="bg-[#0a0a0a] p-4 rounded-md border border-green-500">
+
+{$ ls certifications ✅ Palo Alto Cybersecurity Fundamentals (Apr–Jun 2024) ✅ Zscaler Zero Trust Cloud Security (Oct–Dec 2024) ✅ AWS AI/ML Internship (Jan–Mar 2025) }</pre>
+
+<pre className="bg-[#0a0a0a] p-4 rounded-md border border-green-500">
+
+{$ ls projects 📁 DarkWebScanner.py  - Python + OSINT 📁 EmailPhishGuard.ml - NLP + Classification 📁 ZeroTrustSim       - Policy-based access model }</pre>
+
+<pre className="bg-[#0a0a0a] p-4 rounded-md border border-green-500">
+
+{$ cat published_research.txt 📄 AI-Based Cybersecurity Assistant for Non-Tech Users 🧠 ML + NLP + Flask stack 🗞️ Published | Role: Lead Developer + Author }</pre>
+
+<pre className="bg-[#0a0a0a] p-4 rounded-md border border-green-500">
+
+{$ cat contact_info.txt 📧 just.razzzu@gmail.com 📱 +91 7816002176 🔗 LinkedIn: mohammed-razmirahman-khan 📸 IG: @just.razzzu }</pre>
+
+<div className="pt-6">
+      <a
+        href="#"
+        className="inline-flex items-center gap-2 bg-green-500 text-black px-4 py-2 rounded-md font-semibold hover:bg-green-600 transition"
       >
-        {index === 0 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
-            <CardContent className="p-6">
-              <h2 className="text-3xl text-cyan-300 font-bold mb-4">About Me</h2>
-              <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-                🎓 <strong>B.Tech in Computer Science</strong> (AI & Data Science)<br />
-                🎯 Age: 21 &nbsp; | &nbsp; Born: 13 March 2004<br />
-                🧠 I fuse ML, NLP, and cloud-native security into digital solutions. I’m passionate about ethical hacking, AI innovation, and building tech that protects humans and data alike.
-              </p>
-            </CardContent>
-          </Card>
-        )}
-        {index === 1 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
-            <CardContent className="p-6">
-              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Contact & Socials</h2>
-              <div className="space-y-3 text-gray-300 text-sm md:text-base">
-                <p className="flex items-center gap-2"><Mail className="w-4" /> just.razzzu@gmail.com</p>
-                <p className="flex items-center gap-2"><Phone className="w-4" /> +91 7816002176</p>
-                <p className="flex items-center gap-2"><Linkedin className="w-4" /> <a href="https://www.linkedin.com/in/mohammed-razmirahman-khan-92a357376" target="_blank" className="underline text-cyan-400">LinkedIn</a></p>
-                <p className="flex items-center gap-2"><Instagram className="w-4" /> <a href="https://instagram.com/just.razzzu" target="_blank" className="underline text-cyan-400">@just.razzzu</a></p>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-        {index === 2 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
-            <CardContent className="p-6">
-              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Certifications</h2>
-              <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm md:text-base">
-                <li><strong>Palo Alto Cybersecurity Fundamentals</strong> – 10 weeks (Apr–Jun 2024)</li>
-                <li><strong>Zscaler Zero Trust Cloud Security</strong> – 10 weeks (Oct–Dec 2024)</li>
-                <li><strong>AWS AI/ML Virtual Internship</strong> – 10 weeks (Jan–Mar 2025)</li>
-              </ul>
-            </CardContent>
-          </Card>
-        )}
-        {index === 3 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
-            <CardContent className="p-6">
-              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Published Research</h2>
-              <p className="text-gray-300 text-sm md:text-base">
-                📄 <strong>AI-Based Cybersecurity Assistant for Non-Technical Users</strong><br />
-                A system using ML + NLP to detect threats and communicate them in simple human language.<br />
-                🛠️ Tech Stack: Python, Flask, MongoDB, Scikit-learn, Streamlit<br />
-                ✍️ Role: Lead Developer & Author
-              </p>
-            </CardContent>
-          </Card>
-        )}
-        {index === 4 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
-            <CardContent className="p-6">
-              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Tech Arsenal</h2>
-              <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-300 text-sm md:text-base">
-                <li>Python</li>
-                <li>Machine Learning</li>
-                <li>NLP</li>
-                <li>Wireshark</li>
-                <li>Nmap</li>
-                <li>Burp Suite</li>
-                <li>MongoDB</li>
-                <li>Flask</li>
-                <li>Streamlit</li>
-                <li>AWS</li>
-                <li>Git</li>
-                <li>Linux Scripting</li>
-              </ul>
-            </CardContent>
-          </Card>
-        )}
-        {index === 5 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-xl md:col-span-2 text-center transition duration-300 hover:shadow-cyan-500/40">
-            <CardContent className="p-8">
-              <p className="text-cyan-300 italic text-xl max-w-2xl mx-auto">
-                "In a world full of vulnerabilities, I don’t just find exploits — I architect resilience."
-              </p>
-              <Button className="mt-6 bg-cyan-500 hover:bg-cyan-600 text-black text-sm px-6 py-2 rounded-xl">
-                <FileText className="w-4 mr-2" /> Download Resume
-              </Button>
-            </CardContent>
-          </Card>
-        )}
-        {index === 6 && (
-          <Card className="bg-[#101418] border border-cyan-500 shadow-lg hover:shadow-cyan-500/40 transition duration-300 backdrop-blur-md">
-            <CardContent className="p-6">
-              <h2 className="text-3xl text-cyan-300 font-bold mb-4">Featured Projects</h2>
-              <ul className="text-gray-300 text-sm md:text-base space-y-2">
-                <li>
-                  🔍 <strong>Dark Web Scanner Tool</strong> – A Tor-based Python tool to detect and flag stolen credentials using OSINT feeds.
-                </li>
-                <li>
-                  📧 <strong>AI-based Phishing Email Classifier</strong> – Built with NLP & ML for classifying phishing attacks with 94% accuracy.
-                </li>
-                <li>
-                  🔐 <strong>Zero Trust Access System</strong> – Identity-based access control simulation with policy enforcement layers.
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        )}
-      </motion.div>
-    ))}
-  </section>
+        <FileText className="w-4 h-4" /> Download Resume
+      </a>
+    </div>
+  </motion.section>
 </div>
 
 ); }
